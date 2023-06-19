@@ -12,6 +12,6 @@ while (a <= 122)
 putchar(a);
 a++;
 }
-putchar("\n");
+putchar('\n');
 return (0);
 }
