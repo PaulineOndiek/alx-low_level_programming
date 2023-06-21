@@ -13,7 +13,7 @@ for (a = 0; a <= n; a++)
 for (b = 0; b <= n; b++)
 {
 c = b * a;
-if (j == 0)
+if (b == 0)
 {
 _putchar(c + '0');
 }
