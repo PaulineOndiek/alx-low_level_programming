@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stdio.h>
+#include <ctype.h>
 /**
 * _isupper - checks if input is uppercase or not
 *@c:the input
@@ -6,10 +8,9 @@
 */
 int _isupper(int c)
 {
-for (c = 65; c <= 90; c++)
-if (c >= 65 && c <= 90)
-{
-return (1);
-}
+c = 'C';
+printf("Return value when uppercase char %c is passed: %d", c, isupper(c));
+c = '+';
+printf("\nReturn value when another char %c is passed: %d", c, isupper(c));
 return (0);
 }
