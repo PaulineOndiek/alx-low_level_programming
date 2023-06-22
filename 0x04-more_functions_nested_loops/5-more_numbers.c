@@ -3,16 +3,23 @@
 #include <ctype.h>
 /**
 *more_numbers - prints numbers from 0 to 14
-*and multiplies the result by 10
 *Return: Always 0 (Success)
 */
 void more_numbers(void)
 {
-int i = 0;
-while (i <= 14)
+int a = 0;
+int b = 0;
+while (b <= 9)
 {
-_putchar(i * 10);
-i++;
+while (a <= 14)
+{
+if (a > 9)
+_putchar(a / 10 + '0');
+putchar(a % 10 + '0');
+a++;
 }
 _putchar('\n');
+b++;
+a = 0;
+}
 }
