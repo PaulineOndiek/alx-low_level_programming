@@ -8,9 +8,8 @@
 */
 int _isupper(int c)
 {
-c = 'C';
-printf("Return value when uppercase char %c is passed: %d", c, isupper(c));
-c = '+';
-printf("\nReturn value when another char %c is passed: %d", c, isupper(c));
+if (isupper(c))
+return (1);
+else
 return (0);
 }
