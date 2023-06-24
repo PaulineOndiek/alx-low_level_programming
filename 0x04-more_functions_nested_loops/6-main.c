@@ -12,4 +12,3 @@ print_line(10);
 print_line(-4);
 return (0);
 }
-
