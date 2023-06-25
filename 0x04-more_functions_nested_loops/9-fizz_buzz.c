@@ -7,25 +7,26 @@
 */
 int main(void)
 {
-int i;
-for (i = 1; i <= 100; i++)
+int h = 1;
+while (h <= 100)
 {
-if (i % 3 == 0 && i % 5 == 0)
+if (h % 3 == 0 && h % 5 == 0)
+_putchar("FizzBuzz ");
+else if (h % 5 == 0)
 {
-_putchar("%c\n", FizzBuzz);
-}
-else if (i % 3 == 0)
+if (h == 100)
 {
-_putchar("%c\n", Fizz);
-}
-else if (i % 5 == 0)
-{
-_putchar("%c\n", Buzz);
+_putchar("Buzz");
+_putchar("\n");
 }
 else
-{
-_putchar(i);
-_putchar('\n');
-i++
+_putchar("Buzz ");
 }
+else if (h % 3 == 0)
+_putchar("Fizz ");
+else
+_putchar("%d ", h);
+h++;
+}
+return (0);
 }
