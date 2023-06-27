@@ -17,6 +17,6 @@ for (i = 0; i < num; i++)
 num--;
 temp = s[i];
 s[i] = s[num];
-s[num] =temp;
+s[num] = temp;
 }
 }
