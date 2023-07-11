@@ -23,7 +23,7 @@ for (a = 0; a < height; a++)
 x[a] = malloc(sizeof(int) * width);
 if (x[a] == NULL)
 {
-for (a = 0; a >= 0; a--)
+for (; a >= 0; a--)
 free(x[a]);
 free(x);
 return (NULL);
