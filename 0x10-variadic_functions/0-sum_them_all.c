@@ -17,4 +17,3 @@ sum += va_arg(ap, int);
 va_end(ap);
 return (sum);
 }
-
