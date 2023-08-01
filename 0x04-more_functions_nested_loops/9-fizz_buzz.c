@@ -1,32 +1,37 @@
 #include "main.h"
 #include <stdio.h>
 /**
-*main - Entry point
-*Return: Fizz if divisible by 3 buzz if divisible
-*by 5 and fizzBuzz if divisible by both 3 and 5
+* main - prints the numbers from 1 to 100, followed by a new line
+* but for multiples of three prints Fizz instead of the number
+* and for the multiples of five prints Buzz
+* Return: Always 0 (Success)
 */
 int main(void)
 {
-int h = 1;
-while (h <= 100)
+int i;
+for (i = 1; i <= 100; i++)
 {
-if (h % 3 == 0 && h % 5 == 0)
-_putchar("FizzBuzz ");
-else if (h % 5 == 0)
+if (i % 3 == 0 && i % 5 != 0)
 {
-if (h == 100)
+printf(" Fizz");
+}
+else if (i % 5 == 0 && i % 3 != 0)
 {
-_putchar("Buzz");
-_putchar("\n");
+printf(" Buzz");
+}
+else if (i % 3 == 0 && i % 5 == 0)
+{
+printf(" FizzBuzz");
+}
+else if (i == 1)
+{
+printf("%d", i);
 }
 else
-_putchar("Buzz ");
+{
+printf(" %d", i);
 }
-else if (h % 3 == 0)
-_putchar("Fizz ");
-else
-_putchar("%d ", h);
-h++;
 }
+printf("\n");
 return (0);
 }
