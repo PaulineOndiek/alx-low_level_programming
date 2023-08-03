@@ -13,7 +13,7 @@ unsigned long int current;
 unsigned long int exclusive = n ^ m;
 for (i = 63; i >= 0; i--)
 {
-current = exclusive >> i; 
+current = exclusive >> i;
 if (current & 1)
 count++;
 }
