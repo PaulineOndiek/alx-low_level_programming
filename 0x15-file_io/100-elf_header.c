@@ -1,55 +1,40 @@
+#include <elf.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
+void check_elf(unsigned char *e_ident);
+void print_magic(unsigned char *e_ident);
+void print_class(unsigned char *e_ident);
+void print_data(unsigned char *e_ident);
+void print_version(unsigned char *e_ident);
+void print_abi(unsigned char *e_ident);
+void print_osabi(unsigned char *e_ident);
+void print_type(unsigned int e_type, unsigned char *e_ident);
+void print_entry(unsigned long int e_entry, unsigned char *e_ident);
+void close_elf(int elf);
+/**
+ * check_elf - Checks if a file is an ELF file.
+ * @e_ident: A pointer to an array containing the ELF magic numbers.
+ *
+ * Description: If the file is not an ELF file - exit code 98.
+ */
+void check_elf(unsigned char *e_ident)
+{
+	int index;
 
-// ELF header structure
-typedef struct {
-    uint8_t e_ident[16];
-    uint16_t e_type;
-    uint16_t e_machine;
-    uint32_t e_version;
-    uint64_t e_entry;
-    // ... (other fields not shown for simplicity)
-} ElfHeader;
-
-int main(int argc, char *argv[]) {
-    if (argc != 2) {
-        fprintf(stderr, "Usage: %s <ELF file>\n", argv[0]);
-        return 1;
-    }
-
-    const char *elf_filename = argv[1];
-
-    // Open the ELF file for reading
-    FILE *elf_file = fopen(elf_filename, "rb");
-    if (!elf_file) {
-        perror("Error opening ELF file");
-        return 1;
-    }
-
-    // Read the ELF header
-    ElfHeader header;
-    if (fread(&header, sizeof(ElfHeader), 1, elf_file) != 1) {
-        perror("Error reading ELF header");
-        fclose(elf_file);
-        return 1;
-    }
-
-    // Check if it's a valid ELF file
-    if (header.e_ident[0] != 0x7F || header.e_ident[1] != 'E' || header.e_ident[2] != 'L' || header.e_ident[3] != 'F') {
-        fprintf(stderr, "Not a valid ELF file\n");
-        fclose(elf_file);
-        return 1;
-    }
-
-    // Display information from the ELF header
-    printf("ELF Type: %d\n", header.e_type);
-    printf("Machine: 0x%X\n", header.e_machine);
-    printf("Entry point: 0x%lX\n", header.e_entry);
-    // Add more fields as needed
-
-    // Close the ELF file
-    fclose(elf_file);
-
-    return 0;
+	for (index = 0; index < 4; index++)
+	{
+		if (e_ident[index] != 127 &&
+		    e_ident[index] != 'E' &&
+		    e_ident[index] != 'L' &&
+		    e_ident[index] != 'F')
+		{
+			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
+			exit(98);
+		}
+	}
 }
+
